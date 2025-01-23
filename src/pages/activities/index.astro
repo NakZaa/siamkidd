@@ -1,0 +1,73 @@
+---
+import { ACTIVITIES } from "@consts";
+import BottomLayout from "@layouts/BottomLayout.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import TopLayout from "@layouts/TopLayout.astro";
+import { YouTube } from "astro-embed";
+import { Image } from "astro:assets";
+import happy from "@assets/happy.png";
+---
+
+<PageLayout title={ACTIVITIES.TITLE} description={ACTIVITIES.DESCRIPTION}>
+  <TopLayout>
+    <div class="animate page-heading relative">
+      Activities
+      <Image
+        src={happy}
+        alt="happy"
+        class="absolute right-0 -top-2"
+        height={120}
+        width={91}
+      />
+    </div>
+  </TopLayout>
+  <BottomLayout>
+    <article class="animate">
+      <span class="text-xl text-primary-500">At Siam Kid D</span>
+      <p>
+        Throughout the year, we organise a variety of activities and
+        performances for both our students and our parents. A lot of thought
+        preparation and hard work goes in to ensuring that we raise the bar
+        higher every year.
+      </p>
+    </article>
+    <section class="animate">
+      <div class="flex flex-col gap-12">
+        <div class="flex flex-col gap-8">
+          <h2 class="font-semibold text-xl">City Pillar Shrine of Buriram</h2>
+          <YouTube
+            id="https://youtu.be/HDtZTA_qGrA"
+            class="rounded-xl shadow-sm"
+            posterQuality="high"
+          />
+        </div>
+        <div class="flex flex-col gap-8">
+          <h2 class="font-semibold text-xl">
+            Siam Kid D 10th year anniversary party
+          </h2>
+          <YouTube
+            id="https://youtu.be/UxuSFlipUHs"
+            class="rounded-xl shadow-sm"
+            posterQuality="high"
+          />
+        </div>
+        <div class="flex flex-col gap-8">
+          <h2 class="font-semibold text-xl">Annual Christmas Party</h2>
+          <YouTube
+            id="https://youtu.be/PUMKXerAOek"
+            class="rounded-xl shadow-sm"
+            posterQuality="high"
+          />
+        </div>
+        <div class="flex flex-col gap-8">
+          <h2 class="font-semibold text-xl">Children&apos;s Day</h2>
+          <YouTube
+            id="https://youtu.be/nY-PUgFL56c"
+            class="rounded-xl shadow-sm"
+            posterQuality="high"
+          />
+        </div>
+      </div>
+    </section>
+  </BottomLayout>
+</PageLayout>

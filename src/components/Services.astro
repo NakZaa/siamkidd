@@ -1,0 +1,68 @@
+---
+import { Image } from "astro:assets";
+import cat from "@assets/services/card1.png";
+import candy from "@assets/services/card2.png";
+import fish from "@assets/services/card3.png";
+import bee from "@assets/services/card4.png";
+
+const features = [
+  {
+    title: "Our Priorities",
+    description:
+      "At Siam Kid D School we know that children learn best through play, so creating fun and engaging activities for our students helps form the recipe for success. Priority number one is for our students to love coming to school.",
+    icon: cat,
+    width: 150,
+    height: 150,
+    class: "absolute right-0 inline-block -top-16 rotate-6",
+  },
+  {
+    title: "Importance of Education",
+    description:
+      "The early years of education form the foundation for the building blocks of life. It is essential for young learners to be presented with challenging experiences in a supportive environment.",
+    icon: candy,
+    width: 120,
+    height: 120,
+    class: "absolute inline-block -top-14 -right-6 rotate-12",
+  },
+  {
+    title: "English Proficiency",
+    description:
+      "Learning a language can be a fun and natural experience, and young learners acquire language with ease. They just need the right mentors and a positive environment to make that magic happen.",
+    icon: fish,
+    width: 100,
+    height: 100,
+    class: "absolute right-0 inline-block -top-16",
+  },
+  {
+    title: "Our Curriculum",
+    description:
+      "We follow the UK based Early Years Foundation Stage (EYFS) curriculum. This is used in all early years schools in the UK and provides the framework for learning and development.",
+    icon: bee,
+    width: 80,
+    height: 80,
+    class: "absolute right-2 inline-block -top-16 rotate-12",
+  },
+];
+---
+
+<div class="grid gap-8">
+  {
+    features.map((item) => (
+      <div class="relative bg-primary-950 border border-primary-900 flex flex-col rounded-3xl px-6 py-6 shadow-sm">
+        <Image
+          src={item.icon}
+          width={item.width}
+          height={item.height}
+          alt="Service Card Icon"
+          class={item.class}
+        />
+        <div class="flex flex-col gap-4">
+          <h3 class="text-xl font-medium my-2 mb-4">{item.title}</h3>
+          <p class="text-black/75 text-base sm:text-lg mb-2">
+            {item.description}
+          </p>
+        </div>
+      </div>
+    ))
+  }
+</div>

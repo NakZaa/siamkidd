@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+import star1 from "@assets/testimonials/star1.png";
+import star2 from "@assets/testimonials/star2.png";
+import star3 from "@assets/testimonials/star3.png";
+
+const testimonials = [
+  {
+    name: "Duangchai Sawang-Arom",
+    description: "Parent",
+    message:
+      "I am very glad that my daughter joined this school. I'm happy to see her developing well and she always comes home with so many stories. We love you Siam Kid D School.",
+  },
+  {
+    name: "Andrew Harrison",
+    description: "Parent",
+    message:
+      "The school's security is one of the main reasons we chose Siam Kid D School. Also a real plus for me was the native English teachers it employs.",
+  },
+  {
+    name: "Thitaporn Srisaeng",
+    description: "Parent",
+    message:
+      "การอยู่ร่วมกันกับผู้อื่นซึ่งสิ่งต่าง ๆ เหล่านี้สยามคิดดีก็ได้เตรียมความพร้อมให้กับน้องอย่างเหมาะสมที่สุด",
+  },
+  {
+    name: "ปิยะดา ธณเตชทัต",
+    description: "Parent",
+    message: "เปิดโอกาสให้เด็กได้เตรียมความพร้อมตามวัยอย่างมีความสุข",
+  },
+];
+---
+
+<div class="mx-auto px-4">
+  <div class="flex items-center gap-12">
+    <div class="divide-primary/10 grid divide-y">
+      {
+        testimonials.map((testimonial) => (
+          <figure class="mx-auto w-full flex flex-col items-center my-0 py-8">
+            <div class="flex flex-row gap-2 my-0">
+              {/* {[...Array(3)].map(() => (
+                <svg
+                  class="text-accent h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" />
+                </svg>
+              ))} */}
+              <Image src={star1} alt="star1" class="h-9 w-9 my-0" />
+              <Image src={star2} alt="star2" class="h-9 w-9 my-0" />
+              <Image src={star3} alt="star3" class="h-9 w-9 my-0" />
+            </div>
+            <blockquote class="text-black/70 text-center text-lg italic leading-loose w-full">
+              <p>{testimonial.message}</p>
+            </blockquote>
+            <figcaption class="flex flex-col gap-4 w-full">
+              <div class="text-center">
+                <div class="text-base font-medium">{testimonial.name}</div>
+                <div class="text-brand/70 text-sm">
+                  {testimonial.description}
+                </div>
+              </div>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</div>

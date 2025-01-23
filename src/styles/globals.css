@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --copy-btn-margin: 10px;
+}
+
+html {
+  overflow-y: scroll;
+  color-scheme: light;
+  background-color: #fbfbfe;
+  font-family: "Noto Sans Thai Variable", sans-serif;
+}
+
+html,
+body {
+  @apply h-full w-full antialiased;
+  @apply bg-white;
+  @apply text-black/75;
+}
+
+body {
+  @apply relative flex flex-col;
+}
+
+main {
+  @apply flex flex-col flex-1 bg-white;
+}
+
+header {
+  @apply border-b;
+  @apply transition-all duration-300 ease-in-out;
+}
+
+header:not(.scrolled) {
+  @apply bg-transparent border-transparent;
+}
+
+header.scrolled {
+  @apply bg-white/75;
+  @apply border-black/10;
+  @apply backdrop-blur-sm saturate-200;
+}
+
+article {
+  @apply prose max-w-full pb-12;
+}
+
+.page-heading {
+  @apply font-semibold text-brand text-3xl;
+}
+
+.blend {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/** styles for public /animation.js */
+.animate {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.animate.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+article img {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: block;
+  margin: 0 auto;
+}

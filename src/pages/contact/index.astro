@@ -1,0 +1,129 @@
+---
+import { CONTACT } from "@consts";
+import BottomLayout from "@layouts/BottomLayout.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import TopLayout from "@layouts/TopLayout.astro";
+import { Image } from "astro:assets";
+import rainbow from "@assets/rainbow.png";
+---
+
+<PageLayout title={CONTACT.TITLE} description={CONTACT.DESCRIPTION}>
+  <TopLayout>
+    <div class="animate page-heading relative">
+      Contact us
+      <Image
+        src={rainbow}
+        alt="rainbow"
+        class="absolute right-0 top-0"
+        width={119}
+        height={143}
+      />
+    </div>
+  </TopLayout>
+  <BottomLayout>
+    <article class="animate">
+      <span class="text-xl text-primary-500">Let&apos;s get in touch!</span>
+      <p>
+        We are always happy to hear from you. If you have any questions or would
+        like to arrange a tour of our school, please feel free to contact us.
+      </p>
+    </article>
+    <section class="animate">
+      <div class="mx-auto">
+        <dl class="grid gap-6 lg:grid-cols-3">
+          <!-- Facebook -->
+          <a
+            href="https://www.facebook.com/SiamKidDSchool"
+            target="_blank"
+            no-referrer
+            class="cursor-pointer bg-primary-500/10 shadow-sm group rounded-3xl px-6 py-8"
+          >
+            <dt class="sr-only">Facebook</dt>
+            <dd class="flex h-full flex-col justify-between gap-12">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-primary-600 group-hover:text-primary-400 h-9 w-9 blend"
+                aria-hidden="true"
+                ><path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                ></path></svg
+              >
+              <div class="flex flex-col gap-4">
+                <h3 class="text-xl font-medium">Facebook</h3>
+                <p class="font-medium text-base">Siam Kid D School</p>
+              </div>
+            </dd>
+          </a>
+
+          <!-- Phone number -->
+          <a
+            href="tel:+6644602070"
+            class="cursor-pointer bg-primary-500/10 shadow-sm group rounded-3xl px-6 py-8"
+          >
+            <dt class="sr-only">Phone number</dt>
+            <dd class="flex h-full flex-col justify-between gap-12">
+              <svg
+                class="text-primary-600 group-hover:text-primary-400 h-9 w-9 blend"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9.36556 10.6821C10.302 12.3288 11.6712 13.698 13.3179 14.6344L14.2024 13.3961C14.4965 12.9845 15.0516 12.8573 15.4956 13.0998C16.9024 13.8683 18.4571 14.3353 20.0789 14.4637C20.599 14.5049 21 14.9389 21 15.4606V19.9234C21 20.4361 20.6122 20.8657 20.1022 20.9181C19.5723 20.9726 19.0377 21 18.5 21C9.93959 21 3 14.0604 3 5.5C3 4.96227 3.02742 4.42771 3.08189 3.89776C3.1343 3.38775 3.56394 3 4.07665 3H8.53942C9.0611 3 9.49513 3.40104 9.5363 3.92109C9.66467 5.54288 10.1317 7.09764 10.9002 8.50444C11.1427 8.9484 11.0155 9.50354 10.6039 9.79757L9.36556 10.6821ZM6.84425 10.0252L8.7442 8.66809C8.20547 7.50514 7.83628 6.27183 7.64727 5H5.00907C5.00303 5.16632 5 5.333 5 5.5C5 12.9558 11.0442 19 18.5 19C18.667 19 18.8337 18.997 19 18.9909V16.3527C17.7282 16.1637 16.4949 15.7945 15.3319 15.2558L13.9748 17.1558C13.4258 16.9425 12.8956 16.6915 12.3874 16.4061L12.3293 16.373C10.3697 15.2587 8.74134 13.6303 7.627 11.6707L7.59394 11.6126C7.30849 11.1044 7.05754 10.5742 6.84425 10.0252Z"
+                ></path>
+              </svg>
+              <div class="flex flex-col gap-4">
+                <h3 class="text-xl font-medium">Phone</h3>
+                <p class="font-medium text-base">+66 (0)44 602 070</p>
+              </div>
+            </dd>
+          </a>
+
+          <!-- Address -->
+          <a
+            href="https://maps.app.goo.gl/nK9X814XjuFv1iGf7"
+            target="_blank"
+            no-referrer
+            class="bg-primary-500/10 shadow-sm rounded-3xl px-6 py-8 group cursor-pointer"
+          >
+            <dt class="sr-only">Postal address</dt>
+            <dd class="flex h-full flex-col justify-between gap-12">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-primary-600 group-hover:text-primary-400 h-9 w-9 blend"
+                aria-hidden="true"
+                ><path
+                  d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                ></path><circle cx="12" cy="10" r="3"></circle></svg
+              >
+              <div class="flex flex-col gap-4">
+                <h3 class="text-xl font-medium">Address</h3>
+                <p class="font-medium text-base">
+                  43/8-9 Thani Road, Nai Mueang <br />
+                  Buriram 31000 Thailand
+                </p>
+              </div>
+            </dd>
+          </a>
+        </dl>
+      </div>
+    </section>
+  </BottomLayout>
+</PageLayout>
