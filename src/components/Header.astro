@@ -19,8 +19,12 @@ const subpath = pathname.match(/[^/]+/g);
           href="/"
           class="flex gap-1 text-current hover:text-black transition-colors duration-300 ease-in-out"
         >
-          <div class="text-xs flex items-center flex-col">
-            <Image class="size-9 md:size-6 fill-current" src={eggRead} alt="egg" />
+          <div class="text-xs flex items-center justify-center flex-col">
+            <Image
+              class="fill-current w-[36px] h-[33px] md:w-[24px] md:h-[22px]"
+              src={eggRead}
+              alt="egg"
+            />
             <span class="hidden md:block">{SITE.TITLE}</span>
           </div>
         </a>

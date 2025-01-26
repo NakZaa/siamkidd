@@ -4,134 +4,142 @@ import Testimonials from "@components/Testimonials.astro";
 import { HOME } from "@consts";
 import Layout from "@layouts/PageLayout.astro";
 import { YouTube } from "astro-embed";
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 
 import light from "@assets/light_bulb.png";
 import main from "@assets/main.png";
+import Container from "@components/Container.astro";
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
-  <section class="relative h-screen w-full">
-    <div
-      class="animate absolute h-full w-full flex items-center justify-center"
-    >
+  <Container size="md">
+    <section class="relative h-screen w-full">
       <div
-        class="relative w-full h-full flex flex-col items-center justify-center"
+        class="animate absolute h-full w-full flex items-center justify-center"
       >
-        <Image src={main} alt="siam-kid-d-logo" width={250} height={250} />
-        <div class="flex flex-col items-center justify-center p-5 text-center">
-          <p
-            class="animated text-lg md:text-xl lg:text-2xl font-semibold opacity-75"
-          >
-            Welcome to ...
-          </p>
-          <p
-            class="relative animated text-2xl md:text-4xl font-bold uppercase text-brand text-center"
-          >
-            Siam Kid D School
-            <Image
-              src={light}
-              alt="light bulb"
-              width={60}
-              height={65}
-              class="absolute md:-top-4 md:-right-12 hidden md:block"
-            />
-          </p>
-          <p class="animated text-sm md:text-base lg:text-lg opacity-75 pt-2">
-            Memories of childhood stay with us forever, so let’s make those
-            memories count!
-          </p>
-
+        <div
+          class="relative w-full h-full flex flex-col items-center justify-center"
+        >
+          <Picture
+            formats={["webp"]}
+            loading="eager"
+            src={main}
+            alt="siam-kid-d-logo"
+          />
           <div
-            id="ctaButtons"
-            class="animated flex flex-wrap gap-4 justify-center mt-5"
+            class="flex flex-col items-center justify-center p-5 text-center"
           >
-            <a
-              href="https://www.facebook.com/SiamKidDSchool"
-              target="_blank"
-              no-referrer
-              class="bg-primary hover:bg-primary-600 focus-visible:outline-primary-400 inline-flex items-center justify-center rounded-3xl border border-transparent px-5 py-3 text-base font-medium text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 blend"
+            <p
+              class="animated text-lg md:text-xl lg:text-2xl font-semibold opacity-75"
             >
-              Join us
-            </a>
+              Welcome to ...
+            </p>
+            <p
+              class="relative animated text-2xl md:text-4xl font-bold uppercase text-brand text-center"
+            >
+              Siam Kid D School
+              <Image
+                src={light}
+                alt="light bulb"
+                width={60}
+                height={65}
+                class="absolute md:-top-4 md:-right-12 hidden md:block"
+              />
+            </p>
+            <p class="animated text-sm md:text-base lg:text-lg opacity-75 pt-2">
+              Memories of childhood stay with us forever, so let’s make those
+              memories count!
+            </p>
+
+            <div
+              id="ctaButtons"
+              class="animated flex flex-wrap gap-4 justify-center mt-5"
+            >
+              <a
+                href="https://www.facebook.com/SiamKidDSchool"
+                target="_blank"
+                no-referrer
+                class="bg-brand hover:bg-brand/80 focus-visible:outline-primary-400 inline-flex items-center justify-center rounded-3xl border border-transparent px-5 py-3 text-base font-medium text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 blend"
+              >
+                Join us
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="relative bg-white w-full">
-    <div class="mx-auto max-w-screen-sm p-5 space-y-12 pb-16">
-      <!-- About Section -->
-      <section class="animate">
-        <div class="space-y-4 prose max-w-full pb-6">
-          <div class="flex flex-col gap-2">
-            <h2>Why <span class="text-primary">Siam Kid D</span>?</h2>
-            <YouTube
-              class={"rounded-xl shadow-sm"}
-              id="https://youtu.be/VJrZXDt-tgE?si=xnVjvSGQvtKGPNbU"
-              poster="/open-graph.jpg"
-            />
-          </div>
-        </div>
-      </section>
-
-      <!-- Expertise Section -->
-      <section class="animate">
-        <div class="space-y-4 prose max-w-full pb-6">
-          <div class="flex flex-col gap-2">
-            <h2>Our <span class="text-primary">expertise</span></h2>
-            <Services />
-          </div>
-        </div>
-      </section>
-
-      <section class="animate">
-        <div class="space-y-4 prose max-w-full pb-6">
-          <div class="flex flex-col gap-2">
-            <h2>Our <span class="text-primary">students</span></h2>
-            <YouTube
-              class={"rounded-xl shadow-sm"}
-              id="https://youtu.be/YEAPMbVVoeY"
-              posterQuality="high"
-            />
-          </div>
-        </div>
-      </section>
-
-      <!-- Testimonials Section -->
-      <section class="animate">
-        <div class="space-y-4 prose max-w-full pb-6">
-          <div class="flex flex-col gap-2">
-            <h2>What <span class="text-primary">parents</span> say</h2>
-            <Testimonials />
-          </div>
-        </div>
-      </section>
-
-      <section class="animate">
-        <div
-          class="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8"
-        >
-          <div
-            class="bg-primary-500/10 flex flex-col items-center gap-8 rounded-3xl px-5 py-16 sm:gap-10"
-          >
-            <div class="flex flex-col gap-4 sm:gap-6">
-              <h2
-                class="mx-auto max-w-sm text-3xl font-medium tracking-tight sm:text-4xl"
-              >
-                Join us today!
-              </h2>
+    <div class="relative bg-white w-full">
+      <div class="mx-auto max-w-screen-sm p-5 space-y-12 pb-16">
+        <!-- About Section -->
+        <section class="animate">
+          <div class="space-y-4 prose max-w-full pb-6">
+            <div class="flex flex-col gap-2">
+              <h2>Why <span class="text-primary">Siam Kid D</span>?</h2>
+              <YouTube
+                class={"rounded-xl shadow-sm"}
+                id="https://youtu.be/VJrZXDt-tgE?si=xnVjvSGQvtKGPNbU"
+                poster="/open-graph.jpg"
+              />
             </div>
-            <a
-              href="/contact"
-              class="bg-primary-400 hover:bg-primary-500 focus-visible:outline-primary-400 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white blend focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-            >
-              Contact us
-            </a>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <!-- Expertise Section -->
+        <section class="animate w-full">
+          <div class="space-y-4 prose max-w-full pb-6">
+            <div class="flex flex-col gap-2">
+              <h2>Our <span class="text-primary">expertise</span></h2>
+              <Services />
+            </div>
+          </div>
+        </section>
+
+        <section class="animate w-full">
+          <div class="space-y-4 prose max-w-full pb-6">
+            <div class="flex flex-col gap-2">
+              <h2>Our <span class="text-primary">students</span></h2>
+              <YouTube
+                class={"rounded-xl shadow-sm"}
+                id="https://youtu.be/YEAPMbVVoeY"
+                posterQuality="high"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="animate w-full">
+          <div class="space-y-4 prose max-w-full pb-6">
+            <div class="flex flex-col gap-2">
+              <h2>What <span class="text-primary">parents</span> say</h2>
+              <Testimonials />
+            </div>
+          </div>
+        </section>
+
+        <section class="animate w-full">
+          <div class="mx-auto max-w-2xl text-center lg:max-w-7xl">
+            <div
+              class="bg-primary-500/10 flex flex-col items-center gap-8 rounded-3xl px-5 py-16 sm:gap-10"
+            >
+              <div class="flex flex-col gap-4 sm:gap-6">
+                <h2
+                  class="mx-auto max-w-sm text-3xl font-medium tracking-tight sm:text-4xl"
+                >
+                  Join us today!
+                </h2>
+              </div>
+              <a
+                href="/contact"
+                class="bg-primary-400 hover:bg-primary-500 focus-visible:outline-primary-400 inline-flex items-center justify-center rounded-full border border-transparent px-5 py-3 text-base font-medium text-white blend focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                Contact us
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
+  </Container>
 </Layout>
