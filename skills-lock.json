@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "graphite-stacks": {
+      "source": "outfitter-dev/agents",
+      "sourceType": "github",
+      "computedHash": "e353eb3dc54162a67e05c927511c31cd4aca75e952ac0028d6054742a1969686"
+    }
+  }
+}
