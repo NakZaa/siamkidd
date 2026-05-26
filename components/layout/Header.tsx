@@ -7,10 +7,10 @@ import { useScrolled } from '@/hooks/useScrolled'
 import { copy } from '@/lib/copy'
 import { cn } from '@/lib/utils'
 
-// "Contact" is intentionally omitted here: the "Contact us" CTA button already
-// links to /contact, so listing it as a nav link too would be redundant.
+// "Home" and "Contact" are intentionally omitted: the logo already links home,
+// and the "Contact us" CTA already links to /contact, so listing either as a
+// nav link would be redundant.
 const LINKS = [
-  { href: '/', key: 'home' },
   { href: '/about', key: 'about' },
   { href: '/activities', key: 'activities' }
 ] as const
@@ -91,10 +91,7 @@ export function Header() {
               aria-label="Main"
             >
               {LINKS.map(l => {
-                const active =
-                  l.href === '/'
-                    ? pathname === '/'
-                    : pathname.startsWith(l.href)
+                const active = pathname.startsWith(l.href)
                 return (
                   <Link
                     key={l.href}
@@ -175,10 +172,7 @@ export function Header() {
               <nav aria-label="Main" className="px-3 pb-3">
                 <div className="flex flex-col items-center">
                   {LINKS.map(l => {
-                    const active =
-                      l.href === '/'
-                        ? pathname === '/'
-                        : pathname.startsWith(l.href)
+                    const active = pathname.startsWith(l.href)
                     return (
                       <Link
                         key={l.href}
