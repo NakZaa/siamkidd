@@ -1,4 +1,4 @@
-import { IconBrandMessenger, IconMapPin, IconPhone } from '@tabler/icons-react'
+import { IconBrandFacebook, IconMapPin, IconPhone } from '@tabler/icons-react'
 import type { Metadata } from 'next'
 import { Doodle } from '@/components/media/Doodle'
 import { ScrollReveal } from '@/components/media/ScrollReveal'
@@ -77,13 +77,13 @@ export default function ContactPage() {
 
           {/* Message */}
           <a
-            href={SITE.messenger}
+            href={SITE.facebook}
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-3.5 min-h-[80px] rounded-3xl border border-primary-200 bg-white p-4 transition duration-200 hover:-translate-y-1 hover:border-primary-300 hover:shadow-md"
           >
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary-100 text-brand transition-transform duration-200 group-hover:scale-110">
-              <IconBrandMessenger size={22} aria-hidden />
+              <IconBrandFacebook size={22} aria-hidden />
             </span>
             <div>
               <b className="text-brand block">{copy.contact.message}</b>

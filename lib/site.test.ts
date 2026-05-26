@@ -5,8 +5,8 @@ test('phone has tel: link and display form', () => {
   expect(SITE.phone.tel).toBe('+6644602070')
   expect(SITE.phone.display).toBe('+66 (0)44 602 070')
 })
-test('facebook + messenger + map urls are absolute https', () => {
-  for (const u of [SITE.facebook, SITE.messenger, SITE.mapUrl, SITE.mapEmbed]) {
+test('facebook + map urls are absolute https', () => {
+  for (const u of [SITE.facebook, SITE.mapUrl, SITE.mapEmbed]) {
     expect(u.startsWith('https://')).toBe(true)
   }
 })

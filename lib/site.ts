@@ -3,7 +3,6 @@ export const SITE = {
   nameTh: 'สยามคิดดี',
   phone: { tel: '+6644602070', display: '+66 (0)44 602 070' },
   facebook: 'https://www.facebook.com/SiamKidDSchool',
-  messenger: 'https://m.me/SiamKidDSchool',
   mapUrl: 'https://maps.app.goo.gl/nK9X814XjuFv1iGf7',
   mapEmbed:
     'https://www.google.com/maps?q=Siam+Kid+D+School+Buriram&output=embed',

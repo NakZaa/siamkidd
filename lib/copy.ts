@@ -122,7 +122,7 @@ export const copy = {
     callTitle: 'Call us',
     message: 'Message us',
     messageTitle: 'Message us',
-    messageSub: 'Facebook Messenger',
+    messageSub: 'On Facebook',
     visit: 'Visit us',
     visitTitle: 'Visit us',
     mapLabel: 'Map to Siam Kid D School'
