@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# statuses: write lets the Vercel status action post a commit status;
+# actions: read lets it read this run's job result; contents: read for checkout.
+permissions:
+  contents: read
+  statuses: write
+  actions: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      # Reports this job's result to Vercel as a deployment check (sets "pending"
+      # now, then success/failure when the job finishes). The name MUST match the
+      # check name configured in Vercel's "Connect GitHub Actions" UI.
+      - name: Report CI status to Vercel
+        uses: vercel/repository-dispatch/actions/status@v1
+        with:
+          name: 'Vercel - siamkidd: ci'
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - name: Biome
+        run: bunx biome check .
+      - name: Typecheck
+        run: bun run typecheck
+      - name: Build
+        run: bun run build
+      - name: Install Playwright browser
+        run: bunx playwright install --with-deps chromium
+      - name: Unit tests
+        run: bun run test
+      - name: E2E tests
+        run: bun run test:e2e

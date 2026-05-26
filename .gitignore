@@ -36,5 +36,17 @@ yarn-error.log*
 .turbo
 .cache
 
+# playwright
+/test-results
+/playwright-report
+/blob-report
+/playwright/.cache
+
+# visual brainstorm companion
+/.superpowers
+
+# superpowers planning docs (specs + plans) - local working notes, not shipped
+/docs/superpowers
+
 # bun
 # (bun.lock IS committed)

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -9,23 +9,23 @@
     "ignoreUnknown": true,
     "includes": [
       "**",
-      "!**/node_modules/**",
-      "!**/.next/**",
-      "!**/out/**",
-      "!**/dist/**",
-      "!**/build/**",
-      "!**/.turbo/**",
-      "!**/.cache/**",
+      "!**/node_modules",
+      "!**/.next",
+      "!**/out",
+      "!**/dist",
+      "!**/build",
+      "!**/.turbo",
+      "!**/.cache",
       "!**/*.tsbuildinfo",
       "!bun.lock",
       "!**/package-lock.json",
       "!**/yarn.lock",
       "!**/pnpm-lock.yaml",
-      "!apps/garmin/**",
-      "!apps/mobile/ios/Pods/**",
-      "!apps/mobile/ios/build/**",
-      "!apps/mobile/android/build/**",
-      "!apps/mobile/android/.gradle/**",
+      "!apps/garmin",
+      "!apps/mobile/ios/Pods",
+      "!apps/mobile/ios/build",
+      "!apps/mobile/android/build",
+      "!apps/mobile/android/.gradle",
       "!apps/mobile/assets/**/*.json"
     ]
   },
@@ -54,6 +54,29 @@
     }
   },
   "linter": {
-    "enabled": false
-  }
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["components/ui/carousel.tsx"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "useSemanticElements": "off",
+            "useAriaPropsSupportedByRole": "off"
+          }
+        }
+      }
+    }
+  ]
 }

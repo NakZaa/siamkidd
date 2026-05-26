@@ -1,0 +1,31 @@
+export const SITE = {
+  nameEn: 'Siam Kid D School',
+  nameTh: 'สยามคิดดี',
+  phone: { tel: '+6644602070', display: '+66 (0)44 602 070' },
+  facebook: 'https://www.facebook.com/SiamKidDSchool',
+  messenger: 'https://m.me/SiamKidDSchool',
+  mapUrl: 'https://maps.app.goo.gl/nK9X814XjuFv1iGf7',
+  mapEmbed:
+    'https://www.google.com/maps?q=Siam+Kid+D+School+Buriram&output=embed',
+  address: {
+    line1: '43/8-9 Thani Road, Nai Mueang',
+    line2: 'Buriram 31000 Thailand',
+    full: '43/8-9 Thani Road, Nai Mueang, Buriram 31000 Thailand'
+  },
+  // Structured (schema.org PostalAddress) form, used for SEO / JSON-LD.
+  postal: {
+    streetAddress: '43/8-9 Thani Road, Nai Mueang',
+    addressLocality: 'Buriram',
+    addressRegion: 'Buriram',
+    postalCode: '31000',
+    addressCountry: 'TH'
+  },
+  founded: 2011, // school established 2011
+  url: 'https://siamkiddschool.com',
+  locale: 'en_US',
+  // Keyword-rich default meta description (the hero tagline is brand copy, not
+  // a good search snippet).
+  description:
+    'Siam Kid D School is a bilingual kindergarten in Buriram, Thailand, with native English teachers and a UK Early Years (EYFS) curriculum in a safe, caring environment.',
+  ogImageAlt: 'Welcome to Siam Kid D, a bilingual kindergarten in Buriram'
+} as const
