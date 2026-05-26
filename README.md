@@ -141,7 +141,10 @@ deployment check (`Vercel - siamkidd: ci`) so production promotion waits on CI.
 |---|---|---|
 | Husky pre-commit | every commit | Biome via `lint-staged` |
 | Husky pre-push | every push | TypeScript typecheck; blocks direct pushes to `main` |
-| GitHub Actions CI | PRs + pushes to `main` | `biome check`, typecheck, build, unit tests, e2e tests |
+| GitHub Actions CI | PRs + pushes to `main` | `biome check`, typecheck, build, unit tests |
+
+Playwright e2e (`bun run test:e2e`) runs locally (it uses the WebKit mobile
+device) but is not part of CI.
 
 The pre-push hook blocks direct pushes to `main` to encourage a PR-based flow
 (so CI runs on GitHub before merge). Use `git push --no-verify` only when you

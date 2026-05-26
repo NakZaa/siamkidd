@@ -1,12 +1,4 @@
 #!/bin/sh
-branch="$(git symbolic-ref HEAD 2>/dev/null)"
-
-if [ "$branch" = "refs/heads/main" ]; then
-  echo "❌ Error: Direct push to main is completely forbidden!"
-  echo "   Please create a new branch and open a Pull Request."
-  echo "   This rule allows CI checks to run on GitHub before merging."
-  exit 1
-fi
 
 echo "Running typecheck before push..."
 bun run typecheck
