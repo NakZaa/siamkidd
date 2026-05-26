@@ -196,7 +196,9 @@
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .float {
-    animation: none !important;
+    /* No !important needed: this rule comes after the base .reveal/.float
+       declarations at equal specificity, so it wins the cascade. */
+    animation: none;
   }
 }
 

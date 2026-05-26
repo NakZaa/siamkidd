@@ -1,7 +1,10 @@
 # Siam Kid D (สยามคิดดี)
 
-Bilingual, mobile-first kindergarten website for Siam Kid D School in Buriram,
-Thailand. Built with Next.js and deployed on Vercel.
+Mobile-first marketing website for **Siam Kid D School**, a bilingual
+kindergarten in Buriram, Thailand. Built with Next.js and deployed on Vercel.
+
+The website itself is **English-only** (an earlier bilingual/`next-intl` setup
+was removed).
 
 ---
 
@@ -9,15 +12,15 @@ Thailand. Built with Next.js and deployed on Vercel.
 
 | Layer | Choice |
 |---|---|
-| Framework | Next.js 16 (App Router, SSG) |
+| Framework | Next.js 16 (App Router) |
 | UI | React 19, TypeScript |
-| Styling | Tailwind CSS v4, shadcn/ui, Tabler Icons |
-| i18n | next-intl 4 — EN (default) + Thai |
-| Linter/formatter | Biome |
-| Runtime/package manager | Bun |
-| Testing | Bun test (unit), Playwright (e2e, mobile) |
+| Styling | Tailwind CSS v4, shadcn/ui (Base UI), Tabler Icons |
+| Fonts | Nunito (body) + Fredoka (display), self-hosted via `next/font` |
+| Linter / formatter | Biome |
+| Runtime / package manager | Bun |
+| Testing | Bun test (unit), Playwright (e2e + axe a11y, mobile) |
 | CI | GitHub Actions |
-| Hosting | Vercel |
+| Hosting | Vercel (Node 22) |
 
 ---
 
@@ -28,139 +31,118 @@ bun install
 bun run dev      # http://localhost:3000
 ```
 
+Requires Node 20.9+ (Next 16) and Bun.
+
 ---
 
 ## Scripts
 
 | Command | What it does |
 |---|---|
-| `dev` | Next.js dev server with Turbopack |
-| `build` | Production build (static export) |
+| `dev` | Next.js dev server (Turbopack) |
+| `build` | Production build |
 | `start` | Serve the production build locally |
 | `typecheck` | TypeScript type-check (no emit) |
-| `format` | Biome format with auto-fix |
-| `lint` | Biome lint only |
-| `check` | Biome format + lint with auto-fix |
+| `format` | Biome format (auto-fix) |
+| `lint` | Biome lint |
+| `check` | Biome format + lint + import sort (auto-fix). Run before pushing — CI runs `biome check`, which is stricter than `lint`. |
 | `test` | Bun unit tests |
-| `test:e2e` | Playwright e2e tests (mobile viewport) |
+| `test:e2e` | Playwright e2e (mobile viewport + a11y) |
 
 ---
 
-## Editing content and copy
+## Content and copy
 
-All user-facing text lives in two JSON files:
+- **All user-facing text** lives in `lib/copy.ts` (a typed `copy` object). Edit a key to change any string on the site.
+- **School facts** (phone, address, Facebook / Messenger, Google Maps, founding year) live once in `lib/site.ts`, the single source of truth. The site intentionally has **no email channel** — contact is phone, Facebook Messenger, and the map.
+- **Legal pages** are markdown in `content/legal/` (`terms.md`, `privacy.md`). Have them reviewed by someone qualified in Thai law before launch.
 
-- `messages/en.json` — English (default, production-ready)
-- `messages/th.json` — Thai (draft; pending review by the school owner)
-
-The files are structured by page/section. Edit the relevant key to change any
-string on the site.
-
-School facts — phone number, email, address, Facebook URL, Google Maps links,
-and founding year — are defined once in `lib/site.ts`. This is the single
-source of truth; all components import from there.
-
-Look for `TODO(owner)` comments in the codebase for items that need the
-school's confirmation before going live:
-
-- `hello@siamkiddschool.com` — confirm this is the real contact address
-- `founded: 2014` — confirm the exact founding year
-- Legal page copy — have the owner review before publishing
+Look for `TODO(owner)` comments for anything still worth confirming (for example, geo coordinates and opening hours in `lib/seo.ts` for richer local SEO).
 
 ---
 
-## Adding and updating assets
+## SEO
 
-Drop new source files in `assets-inbox/`, then run the appropriate script:
+- Per-page metadata and canonical URLs (`app/layout.tsx`, each `page.tsx`).
+- Open Graph + Twitter cards; the social image is `public/og.jpg`.
+- JSON-LD structured data (`lib/seo.ts` + `components/seo/JsonLd.tsx`): a Preschool / LocalBusiness organization, a WebSite, and per-page breadcrumbs.
+- `app/sitemap.ts` and `app/robots.ts`.
 
-**Videos (mascot animations)**
+All absolute URLs derive from `SITE.url` in `lib/site.ts`. Update it if the production domain changes.
+
+---
+
+## Mascot animations (egg clips)
+
+The "A day at Siam Kid D" section and the CTA use short egg clips. The sources
+are **Apple HEVC with an alpha layer**, which ffmpeg's software decoder cannot
+fully decode (it drops the entrance frames), so the build script decodes them
+with **Apple AVFoundation**:
 
 ```bash
-./scripts/build-media.sh
+./scripts/build-media.sh    # macOS only (uses swiftc + AVFoundation + ffmpeg)
 ```
 
-This composites the Apple HEVC source clips onto a cream background (`#fbfbfe`)
-and produces opaque H.264 MP4s plus poster images. Transparent web video was
-not feasible from the HEVC sources, so mascot videos must always sit on cream
-or `bg-background` areas — do not place them over coloured or dark sections.
+`scripts/eggdecode.swift` decodes each clip and composites it over the brand
+cream (`#fbfbfe`); `build-media.sh` then crops, scales, and encodes small H.264
+MP4s plus poster JPGs into `public/media`. Looping clips are boomeranged
+(forward + reverse) for a seamless loop; the "arrive" and "home time" clips play
+once and freeze on their last frame.
 
-**Images**
-
-```bash
-bun run scripts/optimize-images.ts
-```
-
-This converts images to WebP with appropriate sizing. Outputs land in `public/`.
-
----
-
-## Internationalization
-
-This project uses [next-intl](https://next-intl.dev). English is the default
-locale and URLs are unprefixed (`/about`, `/contact`). Thai uses the `/th/`
-prefix (`/th/about`, `/th/contact`).
-
-To add a new locale:
-
-1. Edit `i18n/routing.ts` — add the locale code to the `locales` array.
-2. Create `messages/<locale>.json` with translations for all keys present in
-   `messages/en.json`.
+The generated MP4s and posters are committed, so the Vercel build needs no
+ffmpeg or Swift. Because clips are composited onto cream, mascot videos must sit
+on cream / `bg-background` areas, not over coloured or dark sections.
 
 ---
 
 ## Project structure
 
 ```
-app/
-  [locale]/          # All routes (about, activities, contact, legal)
-  globals.css
-  manifest.ts / robots.ts / sitemap.ts
+app/                 # routes: /, /about, /activities, /contact, /legal/[slug]
+  layout.tsx         # root metadata + site-wide JSON-LD
+  globals.css        # Tailwind v4 theme + utilities
+  manifest.ts · robots.ts · sitemap.ts · icon.png · apple-icon.png
 components/
-  ui/                # Base UI primitives (shadcn/ui)
-  layout/            # Header, Footer, MobileNav, LanguageToggle
+  ui/                # shadcn (Base UI) primitives
+  layout/            # Header (liquid-glass nav), Footer
   media/             # MascotVideo, YouTubeFacade, Doodle, ScrollReveal
-  sections/          # Hero, Mission, Expertise, Trust, Testimonials, …
-hooks/               # Client-side React hooks
+  sections/          # Hero, Trust, Mission, Expertise, DayAtSchool, Testimonials, …
+  seo/               # JsonLd
+hooks/               # client hooks (useScrolled, useReducedMotion, useInView)
 lib/
-  site.ts            # School facts (single source of truth)
-  utils.ts / youtube.ts
-i18n/
-  routing.ts         # Locale config
-  request.ts / navigation.ts
-messages/
-  en.json            # English copy
-  th.json            # Thai copy (draft)
-content/
-  legal/             # Terms and privacy markdown
-public/              # Static assets (images, videos, fonts)
-scripts/             # build-media.sh, optimize-images.ts
-.github/
-  workflows/ci.yml   # GitHub Actions CI
+  site.ts            # school facts (single source of truth)
+  copy.ts            # all UI copy
+  seo.ts             # JSON-LD builders
+  fonts.ts · utils.ts · youtube.ts
+content/legal/       # terms.md, privacy.md
+public/              # images, generated media, og.jpg, icons
+scripts/             # build-media.sh, eggdecode.swift, optimize-images.ts
+.github/workflows/   # ci.yml
 ```
 
 ---
 
-## Deployment
+## Deployment (Vercel)
 
-The site deploys to [Vercel](https://vercel.com):
+1. Import the repo; Vercel auto-detects **Next.js** and **Bun** (`bun.lock`).
+2. Set **Node.js Version = 22.x**.
+3. Leave build / output / install commands on the framework defaults. **No environment variables are needed.**
+4. Attach the **siamkiddschool.com** domain (canonical / OG / sitemap URLs all point there).
 
-1. Import the repository in the Vercel dashboard.
-2. Framework is auto-detected as Next.js.
-3. Set the build command to `bun run build` if Vercel does not pick it up
-   automatically.
-4. No environment variables are needed — the site is fully static (SSG).
-
-The production domain `siamkiddschool.com` points to the Vercel project.
-
-The `main` branch is protected. Husky blocks direct pushes to `main`. Open a
-pull request; CI runs automatically and must pass before merging.
+This is a Next.js **server** build (image optimization is enabled), not a static
+export, so it needs a Node host like Vercel. `ci.yml` reports a Vercel
+deployment check (`Vercel - siamkidd: ci`) so production promotion waits on CI.
 
 ---
 
 ## Quality gates
 
-| Gate | When it runs | What it checks |
+| Gate | When | Checks |
 |---|---|---|
-| Husky pre-commit | Every commit | Biome format + lint (via lint-staged) |
-| Husky pre-push | Every push | TypeScript typecheck; blocks direct push to `main` |
-| GitHub Actions CI | PRs + pushes to `main` | Biome, typecheck, build, unit tests, e2e tests |
+| Husky pre-commit | every commit | Biome via `lint-staged` |
+| Husky pre-push | every push | TypeScript typecheck; blocks direct pushes to `main` |
+| GitHub Actions CI | PRs + pushes to `main` | `biome check`, typecheck, build, unit tests, e2e tests |
+
+The pre-push hook blocks direct pushes to `main` to encourage a PR-based flow
+(so CI runs on GitHub before merge). Use `git push --no-verify` only when you
+deliberately need to bypass it.
