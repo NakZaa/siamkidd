@@ -6,11 +6,6 @@ import { copy } from '@/lib/copy'
 
 const QUOTES = [
   {
-    name: 'Philip Crabb',
-    quote:
-      'As a qualified teacher trainer, I checked the curriculum thoroughly before enrolling my daughter, and it was the best decision I could have made. The teachers are wonderfully competent and caring, and the Thai staff always go the extra mile. My two-year-old loves going every single day. Her personality has blossomed, and the staff feel like an extended family.'
-  },
-  {
     name: 'Andrew Harrison',
     quote:
       "Since my son Arran started pre-kindergarten, he has come on in leaps and bounds. At just 2.5, his English and Thai are developing very well, and he's far more confident and learning to share. The security was a big reason we chose Siam Kid D, with keycard-access doors and CCTV throughout, and the native English teachers were a real plus. Every morning, he's happy to head off for another great day."
@@ -25,6 +20,26 @@ const QUOTES = [
     name: 'Pennapha Jenthaworn',
     quote:
       'Whenever she talks about school, she does so with such a bright, cheerful spirit. From Pre-K to K.3, what I felt above all was warmth and safety. Every teacher has gentle manners and kind words, so we never worried. My only regret is that Siam Kid D goes only up to K.3, but these four years have been the most beautiful and memorable. Thank you for caring for her so well.'
+  },
+  // Verbatim excerpts (kept in Thai, not translated) from parents' public
+  // Facebook posts. The Thai font stack is set in globals.css / lib/fonts.ts.
+  {
+    name: 'Dr. Saivaree Vongraviopap',
+    lang: 'th',
+    quote:
+      'สกายเป็นเด็กที่เข้ามากลางคัน เรากังวลมาก\u00A0ๆ ว่าเค้าจะปรับตัวได้ไหม จะมีเพื่อนไหม แต่ไม่น่าเชื่อว่าเค้าสามารถเข้ากับเพื่อน\u00A0ๆ ได้ดี และมีความสุขกับการไปโรงเรียน การเลือกโรงเรียนเป็นสิ่งสำคัญ ไม่ใช่เรื่องสถานที่ แต่เป็นเรื่องความเข้าใจเด็ก บอกเลยว่าเลือกไม่ผิดจริง\u00A0ๆ ขอบคุณโรงเรียนสยามคิดดีที่ทำให้สกายมีความสุขในทุก\u00A0ๆ วันที่มาโรงเรียน'
+  },
+  {
+    name: 'Dr. Phakaon Unlamarn',
+    lang: 'th',
+    quote:
+      'โรงเรียนสยามคิดดีเป็นเหมือนบ้านหลังเล็ก\u00A0ๆ ที่ปลอดภัยและอบอุ่น โรงเรียนไม่ได้แค่ให้ความรู้ แต่สอนทักษะการปรับตัว การอยู่ร่วมกับคนอื่นอย่างมีความสุข พุทธมาเรียนแล้วมีความสุขมาก สนุกทุกกิจกรรมที่ได้ทำ มีเรื่องเล่าทุกคืนก่อนนอน แม่รู้สึกภูมิใจเสมอที่เลือกให้ลูกเรียนที่นี่'
+  },
+  {
+    name: 'Siraprapa Wanmanee',
+    lang: 'th',
+    quote:
+      '3 ปีที่น้องพลอยสวยเรียนที่โรงเรียนสยามคิดดี น้องไม่เคยไม่อยากไปโรงเรียนเลยค่ะ และไม่เคยงอแง น้องสนุกในทุก\u00A0ๆ วันที่ได้ไปโรงเรียน พ่อแม่รู้สึกไม่ผิดหวังเลยที่เลือกโรงเรียนแรกของลูก ก้าวแรกของลูก ให้ทางโรงเรียนสยามคิดดีดูแลน้องค่ะ'
   }
 ]
 
@@ -36,7 +51,7 @@ export function Testimonials() {
           {copy.testimonials.heading}
         </SectionHeading>
         <div className="mt-6 grid gap-4 md:grid-cols-2 md:auto-rows-[1fr]">
-          {QUOTES.map(({ name, quote }) => (
+          {QUOTES.map(({ name, quote, lang }) => (
             <div
               key={name}
               className="flex h-full flex-col rounded-3xl border border-primary-200 bg-white p-5 shadow-sm"
@@ -54,7 +69,10 @@ export function Testimonials() {
                   />
                 ))}
               </div>
-              <p className="mt-3 italic leading-relaxed text-foreground/80">
+              <p
+                lang={lang}
+                className={`mt-3 leading-relaxed text-foreground/80 ${lang ? '' : 'italic'}`}
+              >
                 {quote}
               </p>
               <div className="mt-auto pt-4">

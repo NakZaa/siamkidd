@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { JsonLd } from '@/components/seo/JsonLd'
-import { body, display } from '@/lib/fonts'
+import { body, display, thai } from '@/lib/fonts'
 import { organizationLd, websiteLd } from '@/lib/seo'
 import { SITE } from '@/lib/site'
 import './globals.css'
@@ -12,7 +12,9 @@ export const viewport: Viewport = {
   themeColor: '#4f834d'
 }
 
-const titleDefault = `${SITE.nameEn} · Bilingual Kindergarten in Buriram`
+// Comma form (not a middot) so the home og:title/twitter:title — which inherit
+// this default — match the home page's own comma-form <title> (app/page.tsx).
+const titleDefault = `${SITE.nameEn}, Nursery & Kindergarten in Buriram`
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -31,6 +33,7 @@ export const metadata: Metadata = {
     'สยามคิดดี',
     'kindergarten Buriram',
     'bilingual kindergarten',
+    'nursery and kindergarten Buriram',
     'preschool Buriram',
     'nursery Buriram',
     'English kindergarten Thailand',
@@ -75,7 +78,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${body.variable} ${display.variable} h-full antialiased`}
+      className={`${body.variable} ${display.variable} ${thai.variable} h-full antialiased`}
     >
       <body className="bg-background min-h-dvh">
         <JsonLd data={[organizationLd(), websiteLd()]} />

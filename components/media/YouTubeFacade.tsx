@@ -1,5 +1,6 @@
 'use client'
 import { IconPlayerPlayFilled } from '@tabler/icons-react'
+import posthog from 'posthog-js'
 import { useState } from 'react'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import { youtubeId } from '@/lib/youtube'
@@ -32,7 +33,10 @@ export function YouTubeFacade({
       ) : (
         <button
           type="button"
-          onClick={() => setActive(true)}
+          onClick={() => {
+            setActive(true)
+            posthog.capture('video_played', { title, url })
+          }}
           aria-label={`Play video: ${title}`}
           className="group relative h-full w-full"
         >

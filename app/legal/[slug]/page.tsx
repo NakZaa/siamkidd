@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { pageMeta } from '@/lib/seo'
 
 const VALID_SLUGS = ['terms', 'privacy'] as const
 type Slug = (typeof VALID_SLUGS)[number]
@@ -36,7 +37,11 @@ export async function generateMetadata({
       : slug === 'privacy'
         ? 'Privacy Policy'
         : slug.charAt(0).toUpperCase() + slug.slice(1)
-  return { title, alternates: { canonical: `/legal/${slug}` } }
+  const description =
+    slug === 'terms'
+      ? 'Terms of use for Siam Kid D School, a nursery and kindergarten in Buriram, Thailand.'
+      : 'Privacy policy for Siam Kid D School, a nursery and kindergarten in Buriram, Thailand.'
+  return pageMeta({ heading: title, description, path: `/legal/${slug}` })
 }
 
 export default async function LegalPage({

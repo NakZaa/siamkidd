@@ -4,13 +4,14 @@ import { ScrollReveal } from '@/components/media/ScrollReveal'
 import { YouTubeFacade } from '@/components/media/YouTubeFacade'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { copy } from '@/lib/copy'
-import { breadcrumbLd } from '@/lib/seo'
+import { breadcrumbLd, pageMeta } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: copy.activities.heading,
-  description: copy.activities.intro,
-  alternates: { canonical: '/activities' }
-}
+export const metadata: Metadata = pageMeta({
+  heading: copy.activities.heading,
+  description:
+    'Events, performances, and seasonal activities for children at Siam Kid D School, a nursery and kindergarten in Buriram, all year round.',
+  path: '/activities'
+})
 
 const events = [
   { key: 'cityPillar', url: 'https://youtu.be/HDtZTA_qGrA' },

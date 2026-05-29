@@ -50,3 +50,4 @@ yarn-error.log*
 
 # bun
 # (bun.lock IS committed)
+.env.local

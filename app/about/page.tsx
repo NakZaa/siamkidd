@@ -6,17 +6,19 @@ import {
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { ScrollReveal } from '@/components/media/ScrollReveal'
+import { Faq } from '@/components/sections/Faq'
 import { Mission } from '@/components/sections/Mission'
 import { SectionHeading } from '@/components/sections/SectionHeading'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { copy } from '@/lib/copy'
-import { breadcrumbLd } from '@/lib/seo'
+import { breadcrumbLd, faqPageLd, pageMeta } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: copy.about.heading,
-  description: copy.about.lead,
-  alternates: { canonical: '/about' }
-}
+export const metadata: Metadata = pageMeta({
+  heading: copy.about.heading,
+  description:
+    'Learn about Siam Kid D School, a bilingual nursery and kindergarten in Buriram since 2011, with native English teachers and a UK Early Years (EYFS) curriculum.',
+  path: '/about'
+})
 
 const offerItems = [
   {
@@ -37,10 +39,13 @@ export default function AboutPage() {
   return (
     <div>
       <JsonLd
-        data={breadcrumbLd([
-          { name: 'Home', path: '/' },
-          { name: copy.about.heading, path: '/about' }
-        ])}
+        data={[
+          breadcrumbLd([
+            { name: 'Home', path: '/' },
+            { name: copy.about.heading, path: '/about' }
+          ]),
+          faqPageLd(copy.about.faq)
+        ]}
       />
       {/* Hero / glow header */}
       <section className="bg-glow">
@@ -108,6 +113,14 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+        </div>
+      </ScrollReveal>
+
+      {/* FAQ -- visible Q&A must match the FAQPage JSON-LD above (Google policy). */}
+      <ScrollReveal>
+        <div className="mx-auto max-w-screen-sm px-5 pb-12">
+          <SectionHeading>{copy.about.faqTitle}</SectionHeading>
+          <Faq items={copy.about.faq} />
         </div>
       </ScrollReveal>
     </div>
