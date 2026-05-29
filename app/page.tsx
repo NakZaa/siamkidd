@@ -13,7 +13,7 @@ import { SITE } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: {
-    absolute: `${SITE.nameEn}, Bilingual Kindergarten in Buriram`
+    absolute: `${SITE.nameEn}, Nursery & Kindergarten in Buriram`
   },
   description: SITE.description,
   alternates: { canonical: '/' }

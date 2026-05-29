@@ -102,7 +102,38 @@ export const copy = {
       "The UK Early Years Foundation Stage (EYFS) curriculum, guiding every child's development.",
     diffBilingual:
       'A bilingual environment with caring native English teachers.',
-    diffSafe: 'A safe, secure, and nurturing place that parents trust.'
+    diffSafe: 'A safe, secure, and nurturing place that parents trust.',
+    faqTitle: 'Frequently asked questions',
+    faq: [
+      {
+        q: 'What age groups does Siam Kid D accept?',
+        a: "We welcome young children from Pre-K through Kindergarten 3 (K.3), including children as young as 2 in our Pre-K class. We accept based on each child's readiness rather than age alone."
+      },
+      {
+        q: 'What curriculum do you follow?',
+        a: "We follow the UK Early Years Foundation Stage (EYFS) curriculum, a clear framework that guides each child's growth through fun, engaging, play-based learning."
+      },
+      {
+        q: 'Do you have native English teachers?',
+        a: 'Yes. Our team includes caring native English teachers alongside our Thai staff, so children develop English naturally in a warm, supportive environment.'
+      },
+      {
+        q: 'Is the school safe and secure?',
+        a: 'Yes. Safety is a top priority, with CCTV throughout the school and secure doors creating a nurturing environment that parents trust.'
+      },
+      {
+        q: 'Where is Siam Kid D located?',
+        a: "43/8-9 Thani Road, Nai Mueang, Buriram 31000, Thailand. We've been part of the Buriram community since 2011."
+      },
+      {
+        q: 'How do I arrange a school tour?',
+        a: "We'd love to show you around. Call us on +66 (0)44 602 070 or message us on Facebook to arrange a visit."
+      },
+      {
+        q: 'What does a typical day look like?',
+        a: "A mix of play, structured EYFS learning, and healthy mealtimes (with each week's menu shared with parents), wrapped up with happy goodbyes at home time."
+      }
+    ]
   },
   activities: {
     eyebrow: 'All year round',

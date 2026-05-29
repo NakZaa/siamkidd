@@ -19,12 +19,16 @@ export const SITE = {
     postalCode: '31000',
     addressCountry: 'TH'
   },
+  // Decimal coordinates of the school's pin, used for LocalBusiness geo JSON-LD.
+  geo: { latitude: 14.9971681, longitude: 103.0984342 },
+  // Opening hours, used for `openingHoursSpecification` JSON-LD. Weekdays only.
+  hours: { weekdays: { opens: '08:00', closes: '18:00' } },
   founded: 2011, // school established 2011
   url: 'https://siamkiddschool.com',
   locale: 'en_US',
   // Keyword-rich default meta description (the hero tagline is brand copy, not
   // a good search snippet).
   description:
-    'Siam Kid D School is a bilingual kindergarten in Buriram, Thailand, with native English teachers and a UK Early Years (EYFS) curriculum in a safe, caring environment.',
-  ogImageAlt: 'Welcome to Siam Kid D, a bilingual kindergarten in Buriram'
+    'Siam Kid D School is a nursery and kindergarten in Buriram, Thailand, with native English teachers and a UK Early Years (EYFS) curriculum.',
+  ogImageAlt: 'Welcome to Siam Kid D, a nursery and kindergarten in Buriram'
 } as const

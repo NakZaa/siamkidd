@@ -153,13 +153,14 @@
   body {
     @apply bg-background text-foreground;
     color: rgb(0 0 0 / 75%);
-    font-family: var(--font-sans), sans-serif;
+    font-family: var(--font-sans), var(--font-thai), sans-serif;
   }
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-display), var(--font-sans), sans-serif;
+    font-family:
+      var(--font-display), var(--font-thai), var(--font-sans), sans-serif;
   }
 }
 
@@ -193,11 +194,50 @@
   animation: float 5s ease-in-out infinite;
 }
 
+/* Slow ambient drift for decorative background doodles. Two timings so
+   neighbouring doodles desync and the motion never looks mechanical. */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(6px, -12px);
+  }
+}
+
+.drift {
+  animation: drift 11s ease-in-out infinite;
+}
+
+.drift-2 {
+  animation: drift 14s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+/* One-shot confetti piece: bursts from origin out to (--cx,--cy) then fades. */
+@keyframes confetti-fall {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--cx, 0), var(--cy, 0)) rotate(var(--cr, 0deg))
+      scale(0.7);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
-  .float {
-    /* No !important needed: this rule comes after the base .reveal/.float
-       declarations at equal specificity, so it wins the cascade. */
+  .float,
+  .drift,
+  .drift-2 {
+    /* No !important needed: this rule comes after the base declarations at
+       equal specificity, so it wins the cascade. */
     animation: none;
   }
 }

@@ -1,10 +1,9 @@
 # Siam Kid D (สยามคิดดี)
 
-Mobile-first marketing website for **Siam Kid D School**, a bilingual
+Mobile-first marketing website for **Siam Kid D School**, a nursery and
 kindergarten in Buriram, Thailand. Built with Next.js and deployed on Vercel.
 
-The website itself is **English-only** (an earlier bilingual/`next-intl` setup
-was removed).
+The website is **English-only**.
 
 ---
 
@@ -126,8 +125,13 @@ scripts/             # build-media.sh, eggdecode.swift, optimize-images.ts
 
 1. Import the repo; Vercel auto-detects **Next.js** and **Bun** (`bun.lock`).
 2. Set **Node.js Version = 22.x**.
-3. Leave build / output / install commands on the framework defaults. **No environment variables are needed.**
-4. Attach the **siamkiddschool.com** domain (canonical / OG / sitemap URLs all point there).
+3. Leave build / output / install commands on the framework defaults.
+4. Set the environment variable **`NEXT_PUBLIC_POSTHOG_TOKEN`** (PostHog project
+   API key, the `phc_…` value) so analytics run in production. It is read in
+   `instrumentation-client.ts`; if it is unset, PostHog simply stays disabled
+   (the site still works). The local value lives in `.env.local`, which is
+   gitignored, so it must be added in Vercel separately.
+5. Attach the **siamkiddschool.com** domain (canonical / OG / sitemap URLs all point there).
 
 This is a Next.js **server** build (image optimization is enabled), not a static
 export, so it needs a Node host like Vercel. `ci.yml` reports a Vercel

@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: SITE.nameEn,
     short_name: 'Siam Kid D',
-    description: 'Bilingual kindergarten in Buriram, Thailand',
+    description: 'Nursery & kindergarten in Buriram, Thailand',
     start_url: '/',
     display: 'standalone',
     background_color: '#fbfbfe',
