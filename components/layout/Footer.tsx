@@ -48,13 +48,13 @@ export function Footer() {
               <p className="mb-3 text-xs font-bold uppercase tracking-wide text-brand">
                 Explore
               </p>
-              <ul className="flex flex-col gap-2.5 text-sm">
+              <ul className="flex flex-col text-sm">
                 {NAV_LINKS.map(l => (
                   <li key={l.href}>
                     <Link
                       href={l.href}
                       prefetch={false}
-                      className="text-muted-foreground transition hover:text-brand"
+                      className="flex min-h-11 items-center text-muted-foreground transition hover:text-brand"
                     >
                       {copy.nav[l.key]}
                     </Link>
@@ -71,7 +71,7 @@ export function Footer() {
               <address className="flex flex-col gap-2 text-sm text-muted-foreground not-italic">
                 <a
                   href={`tel:${SITE.phone.tel}`}
-                  className="transition hover:text-brand"
+                  className="flex min-h-11 items-center transition hover:text-brand"
                 >
                   {SITE.phone.display}
                 </a>
@@ -88,12 +88,12 @@ export function Footer() {
               <p className="mb-3 text-xs font-bold uppercase tracking-wide text-brand">
                 Legal
               </p>
-              <ul className="flex flex-col gap-2.5 text-sm">
+              <ul className="flex flex-col text-sm">
                 <li>
                   <Link
                     href="/legal/terms"
                     prefetch={false}
-                    className="text-muted-foreground transition hover:text-brand"
+                    className="flex min-h-11 items-center text-muted-foreground transition hover:text-brand"
                   >
                     {copy.footer.terms}
                   </Link>
@@ -102,7 +102,7 @@ export function Footer() {
                   <Link
                     href="/legal/privacy"
                     prefetch={false}
-                    className="text-muted-foreground transition hover:text-brand"
+                    className="flex min-h-11 items-center text-muted-foreground transition hover:text-brand"
                   >
                     {copy.footer.privacy}
                   </Link>
