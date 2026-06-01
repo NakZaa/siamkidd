@@ -44,17 +44,19 @@ export default function ActivitiesPage() {
             </div>
 
             {/* Eyebrow */}
-            <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+            <p className="mt-4 text-sm font-bold text-brand">
               {copy.activities.eyebrow}
             </p>
 
             {/* Heading */}
-            <h1 className="mt-1 text-3xl font-bold text-brand sm:text-4xl">
+            <h1 className="mt-1 text-balance text-3xl font-bold text-brand sm:text-4xl">
               {copy.activities.heading}
             </h1>
 
             {/* Intro */}
-            <p className="mt-2 text-foreground/75">{copy.activities.intro}</p>
+            <p className="mt-2 text-pretty text-foreground/75">
+              {copy.activities.intro}
+            </p>
           </ScrollReveal>
         </div>
       </section>

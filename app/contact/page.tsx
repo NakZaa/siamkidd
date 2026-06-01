@@ -39,17 +39,17 @@ export default function ContactPage() {
             </div>
 
             {/* Eyebrow */}
-            <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-primary">
+            <p className="mt-4 text-sm font-bold text-brand">
               {copy.contact.eyebrow}
             </p>
 
             {/* Heading */}
-            <h1 className="mt-1 text-3xl font-bold text-brand sm:text-4xl">
+            <h1 className="mt-1 text-balance text-3xl font-bold text-brand sm:text-4xl">
               {copy.contact.heading}
             </h1>
 
             {/* Lead */}
-            <p className="mx-auto mt-2 max-w-[340px] text-lg text-foreground/80">
+            <p className="mx-auto mt-2 max-w-[340px] text-pretty text-lg text-foreground/80">
               {copy.contact.lead}
             </p>
           </ScrollReveal>
