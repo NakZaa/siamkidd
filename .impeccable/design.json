@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-02T00:00:00.000Z",
+  "title": "Design System: Siam Kid D School",
+  "extensions": {
+    "colorMeta": {
+      "nest-green": { "role": "primary", "displayName": "Nest Green", "canonical": "#3c643d", "tonalRamp": ["#132013", "#264027", "#39603a", "#3c643d", "#4f834d", "#609f61", "#80b380", "#9fc6a0"] },
+      "leaf-green": { "role": "primary", "displayName": "Leaf Green", "canonical": "#4f834d", "tonalRamp": ["#264027", "#39603a", "#4d804d", "#4f834d", "#609f61", "#80b380", "#9fc6a0", "#bfd9c0"] },
+      "sunbeam": { "role": "secondary", "displayName": "Sunbeam Yellow", "canonical": "#f1df8d", "tonalRamp": ["#8a6d12", "#b08c1f", "#d4ab35", "#e6c655", "#f1df8d", "#f6e8ab", "#faf0c8", "#fdf8e3"] },
+      "blush": { "role": "tertiary", "displayName": "Blush Pink", "canonical": "#f6b8c8", "tonalRamp": ["#7a2a3c", "#a23a52", "#c85a72", "#e58aa0", "#f6b8c8", "#f9cdd9", "#fce0e8", "#fef1f4"] },
+      "eggshell": { "role": "neutral", "displayName": "Eggshell White", "canonical": "#fbfbfe", "tonalRamp": ["#262626", "#4d4d4d", "#737373", "#999999", "#c2c2c2", "#e0e0e0", "#f2f2f2", "#fbfbfe"] },
+      "sprout-100": { "role": "neutral", "displayName": "Sprout Tint", "canonical": "#dfecdf", "tonalRamp": ["#264027", "#39603a", "#609f61", "#80b380", "#9fc6a0", "#bfd9c0", "#dfecdf", "#eff5ef"] },
+      "ink": { "role": "neutral", "displayName": "Soft Charcoal Ink", "canonical": "#262626", "tonalRamp": ["#0a0a0a", "#171717", "#262626", "#404040", "#5c5c5c", "#737373", "#a3a3a3", "#d4d4d4"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (Fredoka)", "purpose": "Hero headline; rounded geometric, bold 700, Nest Green." },
+      "headline": { "displayName": "Headline (Fredoka)", "purpose": "Section titles in 3 tiers (sm/default/lg); lg is the page peak. Draw-on underline." },
+      "title": { "displayName": "Title (Fredoka)", "purpose": "Card and feature titles, 600." },
+      "body": { "displayName": "Body (Nunito)", "purpose": "Prose and UI text; Soft Charcoal at 65-85%; 65-75ch; >=14px floor." },
+      "thai": { "displayName": "Thai (Noto Sans Thai Looped)", "purpose": "Thai-language content only (parent testimonials); looped face, lh ~1.7, never italic." },
+      "label": { "displayName": "Label (Nunito)", "purpose": "Short uppercase labels only (footer groups, hero lead)." }
+    },
+    "shadows": [
+      { "name": "hairline-lift", "value": "0 1px 2px rgba(0,0,0,0.05)", "purpose": "The resting shadow: soft cards, FAQ items, round trust chips." },
+      { "name": "hover-lift", "value": "0 4px 12px rgba(0,0,0,0.10)", "purpose": "shadow-md on hover for interactive cards (contact links), paired with -translate-y-1. Communicates tappable, never decorative." },
+      { "name": "glass-float", "value": "0 8px 26px rgba(60,100,61,0.14), inset 0 1px 0 rgba(255,255,255,0.95)", "purpose": "Reserved exclusively for the floating glass nav." }
+    ],
+    "motion": [
+      { "name": "reveal", "value": "opacity 0->1, translateY 24px->0 over 700ms ease-out", "purpose": "ScrollReveal section entrance; in-view gated; instant under reduced motion." },
+      { "name": "draw-on", "value": "stroke-dashoffset 1->0 over 700-1000ms ease-out (pathLength=1)", "purpose": "Hand-drawn SVG strokes (section underline, sparkle/swoosh) sketch on when in view." },
+      { "name": "float", "value": "translateY 0 -> -8px, 5s ease-in-out infinite", "purpose": "Continuous soft bob on decorative dots/doodles (inner layer of Parallax)." },
+      { "name": "parallax", "value": "translate3d(0, -scrollY * speed, 0) on scroll (speed 0.1-0.3)", "purpose": "Outer layer of Parallax: decorative elements lag the scroll. Transform-only, reduced-motion off." },
+      { "name": "drift", "value": "translate(0,0) -> (6px,-12px), 11s/14s ease-in-out infinite (desynced)", "purpose": "Slow ambient drift for background doodles; two timings so neighbours never sync." },
+      { "name": "confetti-fall", "value": "burst from origin to (--cx,--cy) rotate(--cr) scale 1->0.7, fade, 1.1s ease-out once", "purpose": "One-shot confetti burst on scroll-in; fixed deterministic trajectories; nothing under reduced motion." },
+      { "name": "bob", "value": "translateY 0 -> 5px, 1.6s ease-in-out infinite", "purpose": "Hero scroll-cue chevron." },
+      { "name": "state-transition", "value": "200-300ms ease-out", "purpose": "Hover/active/nav/accordion transitions." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The site's key affordance, the Nest-Green 'Contact us' pill. On marketing surfaces it's wrapped in TrackedLink for analytics.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Contact us</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 12px 24px; border-radius: 9999px; background: #3c643d; color: #fff; font-family: Fredoka, ui-rounded, system-ui, sans-serif; font-weight: 700; font-size: 0.95rem; text-decoration: none; border: none; transition: background 0.2s ease-out, transform 0.1s ease-out; } .ds-btn-primary:hover { background: #356037; } .ds-btn-primary:focus-visible { outline: 2px solid #4f834d; outline-offset: 2px; } .ds-btn-primary:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Quieter partner to the primary pill (e.g. 'Facebook'). White fill, Nest-Green text, Sprout border.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Facebook</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 12px 24px; border-radius: 9999px; background: #fff; color: #3c643d; font-family: Fredoka, ui-rounded, system-ui, sans-serif; font-weight: 700; font-size: 0.95rem; text-decoration: none; border: 1px solid #bfd9c0; transition: background 0.2s ease-out, transform 0.1s ease-out; } .ds-btn-secondary:hover { background: #eff5ef; } .ds-btn-secondary:focus-visible { outline: 2px solid #4f834d; outline-offset: 2px; } .ds-btn-secondary:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "h2 in Fredoka Nest Green, three size tiers. A hand-drawn accent underline draws on (left-to-right) when it scrolls into view.",
+      "html": "<h2 class=\"ds-section-heading\"><span class=\"ds-sh-inner\">Our approach<svg class=\"ds-sh-underline\" viewBox=\"0 0 200 12\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M2 8 C 45 2, 85 11, 130 6 S 185 3, 198 7\" fill=\"none\" stroke=\"#f1df8d\" stroke-width=\"3.5\" stroke-linecap=\"round\" pathLength=\"1\" style=\"stroke-dasharray:1;stroke-dashoffset:0\"/></svg></span></h2>",
+      "css": ".ds-section-heading { margin: 0; font-family: Fredoka, ui-rounded, system-ui, sans-serif; font-weight: 600; font-size: clamp(1.5rem, 4vw, 1.875rem); line-height: 1.2; color: #3c643d; text-wrap: balance; } .ds-sh-inner { position: relative; display: inline-block; } .ds-sh-underline { position: absolute; left: 0; bottom: -8px; height: 10px; width: 100%; overflow: visible; } .ds-sh-underline path { transition: stroke-dashoffset 0.7s ease-out; } @media (prefers-reduced-motion: reduce) { .ds-sh-underline path { transition: none; } }"
+    },
+    {
+      "name": "Soft Card",
+      "kind": "card",
+      "refersTo": "card-soft",
+      "description": "Pillowy feature card: White on Eggshell, 22px corners, Sprout border, resting hairline shadow. A doodle often peeks from a corner.",
+      "html": "<div class=\"ds-card-soft\"><h3 class=\"ds-card-soft__title\">Learn through play</h3><p class=\"ds-card-soft__body\">Priority number one is that children love coming to school.</p></div>",
+      "css": ".ds-card-soft { border-radius: 22px; background: #fff; border: 1px solid #bfd9c0; box-shadow: 0 1px 2px rgba(0,0,0,0.05); padding: 20px; max-width: 280px; } .ds-card-soft__title { margin: 0; font-family: Fredoka, ui-rounded, system-ui, sans-serif; font-weight: 600; font-size: 1.125rem; line-height: 1.35; color: #3c643d; } .ds-card-soft__body { margin: 6px 0 0; font-family: Nunito, system-ui, sans-serif; font-size: 0.9rem; line-height: 1.6; color: rgba(38,38,38,0.75); }"
+    },
+    {
+      "name": "Trust Chip",
+      "kind": "custom",
+      "refersTo": "trust-chip",
+      "description": "Card-free reassurance item: a round Sprout chip with a Nest-Green icon and a bold green label beneath, on the page.",
+      "html": "<div class=\"ds-trust-chip\"><span class=\"ds-trust-chip__icon\"><svg viewBox=\"0 0 24 24\" width=\"28\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.566z\"/></svg></span><p class=\"ds-trust-chip__label\">10+ years of care</p></div>",
+      "css": ".ds-trust-chip { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; } .ds-trust-chip__icon { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 9999px; background: #dfecdf; color: #3c643d; box-shadow: 0 1px 2px rgba(0,0,0,0.05); transition: transform 0.2s ease-out; } .ds-trust-chip:hover .ds-trust-chip__icon { transform: scale(1.05); } .ds-trust-chip__label { margin: 0; font-family: Nunito, system-ui, sans-serif; font-weight: 700; font-size: 0.9rem; line-height: 1.3; color: #3c643d; }"
+    },
+    {
+      "name": "FAQ Item",
+      "kind": "custom",
+      "refersTo": "faq-item",
+      "description": "Accordion item: Card-White, Sprout border, Nest-Green question button with a plus that rotates to a cross; panel animates via grid-template-rows.",
+      "html": "<div class=\"ds-faq\"><button class=\"ds-faq__q\" aria-expanded=\"true\"><span>What ages do you take?</span><svg class=\"ds-faq__plus\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg></button><div class=\"ds-faq__panel\"><p class=\"ds-faq__a\">We welcome children from around 2 to 6 years old.</p></div></div>",
+      "css": ".ds-faq { overflow: hidden; border-radius: 18px; border: 1px solid #bfd9c0; background: #fff; } .ds-faq__q { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; text-align: left; font-family: Nunito, system-ui, sans-serif; font-weight: 600; color: #3c643d; background: none; border: none; cursor: pointer; } .ds-faq__plus { color: #4f834d; transition: transform 0.3s ease-out; } .ds-faq__q[aria-expanded=\"true\"] .ds-faq__plus { transform: rotate(45deg); } .ds-faq__panel { padding: 0 20px 20px; } .ds-faq__a { margin: 0; font-family: Nunito, system-ui, sans-serif; line-height: 1.6; color: rgba(38,38,38,0.8); } @media (prefers-reduced-motion: reduce) { .ds-faq__plus { transition: none; } }"
+    },
+    {
+      "name": "Contact Card",
+      "kind": "card",
+      "refersTo": "contact-card",
+      "description": "Large tap target (call/message/visit): rounded-3xl Card-White with a Sprout icon chip, title, detail. Lifts on hover (state-driven elevation).",
+      "html": "<a class=\"ds-contact-card\" href=\"#\"><span class=\"ds-contact-card__icon\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2\"/></svg></span><span class=\"ds-contact-card__text\"><b>Call us</b><span>+66 (0)44 602 070</span></span></a>",
+      "css": ".ds-contact-card { display: flex; align-items: center; gap: 14px; min-height: 80px; padding: 16px; border-radius: 22px; background: #fff; border: 1px solid #bfd9c0; text-decoration: none; transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out; } .ds-contact-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.10); border-color: #9fc6a0; } .ds-contact-card:focus-visible { outline: 2px solid #4f834d; outline-offset: 2px; } .ds-contact-card__icon { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; border-radius: 9999px; background: #dfecdf; color: #3c643d; transition: transform 0.2s ease-out; } .ds-contact-card:hover .ds-contact-card__icon { transform: scale(1.1); } .ds-contact-card__text { display: flex; flex-direction: column; font-family: Nunito, system-ui, sans-serif; } .ds-contact-card__text b { color: #3c643d; } .ds-contact-card__text span { font-size: 0.875rem; color: rgba(38,38,38,0.65); }"
+    },
+    {
+      "name": "Floating Glass Nav",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "The one always-lifted element: a frosted-glass pill floating at the top, with wordmark, links, and a Nest-Green CTA. The only place glass is allowed.",
+      "html": "<header class=\"ds-nav\"><span class=\"ds-nav__brand\">Siam Kid D</span><nav class=\"ds-nav__links\"><a href=\"#\">About</a><a href=\"#\">Activities</a></nav><a class=\"ds-nav__cta\" href=\"#\">Contact us</a></header>",
+      "css": ".ds-nav { display: inline-flex; align-items: center; gap: 16px; padding: 8px 12px 8px 16px; border-radius: 9999px; background: rgba(255,255,255,0.72); -webkit-backdrop-filter: blur(16px) saturate(125%); backdrop-filter: blur(16px) saturate(125%); border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 8px 26px rgba(60,100,61,0.14), inset 0 1px 0 rgba(255,255,255,0.95); font-family: Fredoka, ui-rounded, system-ui, sans-serif; } .ds-nav__brand { font-weight: 700; font-size: 16px; color: #3c643d; } .ds-nav__links { display: flex; gap: 4px; } .ds-nav__links a { padding: 6px 12px; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; color: rgba(60,100,61,0.8); text-decoration: none; transition: background 0.2s ease-out, color 0.2s ease-out; } .ds-nav__links a:hover { background: #dfecdf; color: #3c643d; } .ds-nav__cta { padding: 6px 16px; border-radius: 9999px; background: #3c643d; color: #fff; font-size: 0.875rem; font-weight: 700; text-decoration: none; transition: background 0.2s ease-out; } .ds-nav__cta:hover { background: #356037; }"
+    },
+    {
+      "name": "Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Small Leaf-Green pill label for inline tags.",
+      "html": "<span class=\"ds-badge\">Bilingual</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; height: 20px; padding: 2px 8px; border-radius: 26px; background: #4f834d; color: #fff; font-family: Nunito, system-ui, sans-serif; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Sunny Second Home",
+    "overview": "Siam Kid D is a bilingual kindergarten, and the brand reads like the place a parent hopes it is: a warm, light-filled second home where small children are safe, happy, and growing. Built from the logo outward (egg-chick mascots on a green roundel, golden hand-drawn lettering), the surface is eggshell whites, growing greens, and a buttery shaft of sunlight. The feel is soft, rounded, tactile. The motion language is hand-drawn and gently alive: line accents draw themselves on as they scroll into view, decorative dots float and parallax, a one-shot confetti burst celebrates a moment. All motion is transform/opacity only and disabled under prefers-reduced-motion. Depth is flat at rest, lifted by glow gradients, one floating glass nav, and hover responses. Content is English-led, with Thai parent voices set in a looped Thai face. It is never corporate/clinical, never a generic template, never cheap/amateur.",
+    "keyCharacteristics": [
+      "Egg-chick mascots and hand-drawn doodles as the signature decorative voice",
+      "A 'nest green + sunbeam + eggshell' palette pulled directly from the logo",
+      "Hand-drawn motion: draw-on SVG strokes, soft float + scroll parallax, one-shot confetti",
+      "Full-pill buttons and large soft radii everywhere; nothing sharp",
+      "Flat at rest; elevation is a hover/state response, plus one floating glass nav",
+      "A three-tier section-heading scale, not one flat size",
+      "English-led, with Thai parent voices in a looped Thai face",
+      "Reduced motion fully respected; mobile-first and thumb-first"
+    ],
+    "rules": [
+      { "name": "The Green-Voice Rule", "body": "Headings, labels, nav, and the wordmark are Nest Green (#3c643d), not black. Body prose is Soft Charcoal at 65-85%.", "section": "colors" },
+      { "name": "The Sunbeam-as-Light Rule", "body": "Sunbeam Yellow is light, not a surface: glow, spotlight, draw-on strokes, confetti, highlights. Never text on a Sunbeam fill or Sunbeam text on white.", "section": "colors" },
+      { "name": "The Tint-Not-Shadow Rule", "body": "Surfaces separate by sitting Card White or a Sprout tint against Eggshell, not by casting shadows.", "section": "colors" },
+      { "name": "The Weight-Carries-Hierarchy Rule", "body": "Both Latin faces are rounded sans; signal importance with weight (400 to 600/700) and a >=1.25 size jump, not a font swap.", "section": "typography" },
+      { "name": "The Sparing-Caps Rule", "body": "Uppercase is for short labels only. Section labels that were tracked-caps eyebrows are now sentence-case Fredoka green. Never an eyebrow above every section.", "section": "typography" },
+      { "name": "The One-Glass Rule", "body": "Frosted glass is the navigation's signature and only the navigation's. No glass cards or decorative blur elsewhere.", "section": "elevation" },
+      { "name": "The Flat-At-Rest Rule", "body": "Surfaces are flat until the user acts. Shadows are a hover/focus response; for a focal lift at rest, add warmth (glow/tint), not a heavier drop shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do speak in Nest Green (#3c643d): headings, labels, nav, wordmark; body is Soft Charcoal at 65-85%.",
+      "Do make every button a full pill with a >=44px tap target and keep the Nest-Green 'Contact us' CTA reachable on every screen.",
+      "Do use the egg-chick mascots and hand-drawn doodles as the decorative voice.",
+      "Do keep motion hand-drawn and gentle: draw-on strokes, soft float + parallax, a one-shot confetti burst. All transform/opacity, all reduced-motion safe.",
+      "Do separate surfaces with Card White and Sprout tints, not shadows; let elevation be a hover/state response.",
+      "Do keep Sunbeam Yellow as light: glow, spotlight, stroke, confetti.",
+      "Do set lang='th' on Thai text and let it fall through to Noto Sans Thai Looped; don't italicize Thai.",
+      "Do hold WCAG 2.1 AA: body >=4.5:1, large/bold >=3:1. Re-check green-on-tint."
+    ],
+    "donts": [
+      "Don't go corporate / clinical, sterile, cold, stock-photo daycare-chain.",
+      "Don't ship a generic template: no tiny uppercase tracked eyebrow above every section, no identical icon-card grid.",
+      "Don't look cheap / amateur: no clip-art, no default system fonts, no broken spacing or overflowing headings.",
+      "Don't put text on a Sunbeam Yellow fill, or Sunbeam text on white.",
+      "Don't use glassmorphism anywhere but the one floating nav.",
+      "Don't use a border-left/border-right colored stripe as an accent.",
+      "Don't use gradient text; emphasize with weight, size, or Nest Green.",
+      "Don't rely on a font swap for hierarchy; lean on weight and size.",
+      "Don't add a fourth font family; three (Fredoka + Nunito + Noto Sans Thai Looped) is the cap.",
+      "Don't stack resting shadows to fake depth; elevation responds to state."
+    ]
+  }
+}
