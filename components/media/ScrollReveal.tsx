@@ -17,7 +17,7 @@ export function ScrollReveal({
       ref={ref}
       className={cn(
         'transition-all duration-700 ease-out motion-reduce:opacity-100 motion-reduce:translate-y-0',
-        inView ? 'opacity-100 translate-y-0' : 'translate-y-6 opacity-0',
+        inView ? 'opacity-100 translate-y-0' : 'translate-y-3 opacity-0',
         className
       )}
       style={{ transitionDelay: `${delay}ms` }}
