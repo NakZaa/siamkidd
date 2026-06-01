@@ -47,7 +47,7 @@ export function MascotVideo({
         muted
         loop={loop}
         playsInline
-        preload="auto"
+        preload="none"
         disablePictureInPicture
         poster={`/media/${name}-poster.jpg`}
         className="h-full w-auto max-w-full object-contain"

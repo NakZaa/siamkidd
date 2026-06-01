@@ -34,7 +34,7 @@ export function DayAtSchool() {
                   <h3 className="text-base font-semibold text-brand">
                     {copy.day[key].title}
                   </h3>
-                  <p className="mt-0.5 text-[12.5px] leading-relaxed text-foreground/70">
+                  <p className="mt-0.5 text-sm leading-relaxed text-foreground/70">
                     {copy.day[key].body}
                   </p>
                 </div>

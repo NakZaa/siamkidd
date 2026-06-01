@@ -2,46 +2,57 @@ import { Doodle } from '@/components/media/Doodle'
 import { ScrollReveal } from '@/components/media/ScrollReveal'
 import { SectionHeading } from '@/components/sections/SectionHeading'
 import { copy } from '@/lib/copy'
+import { cn } from '@/lib/utils'
 
-// Each doodle keeps its real aspect ratio (the source images are not square),
-// so forcing a square box squished them. Sizes below are aspect-correct.
-const cards = [
-  { key: 'play', doodle: '/img/doodle-cat.webp', w: 56, h: 34 },
-  { key: 'early', doodle: '/img/doodle-candy.webp', w: 56, h: 35 },
-  { key: 'english', doodle: '/img/doodle-fish.webp', w: 54, h: 45 },
-  { key: 'curriculum', doodle: '/img/doodle-bee.webp', w: 44, h: 52 }
+// "Our approach" reads as a doodle-led list, not a card grid: each approach is a
+// row with a big sticker-style doodle beside the text, the doodle alternating
+// sides on desktop for a gentle zigzag. Doodles keep their real aspect ratio
+// (the source art is not square), so widths are set via class and height auto.
+const rows = [
+  { key: 'play', doodle: '/img/doodle-cat.webp', w: 92, h: 56 },
+  { key: 'early', doodle: '/img/doodle-candy.webp', w: 92, h: 58 },
+  { key: 'english', doodle: '/img/doodle-fish.webp', w: 84, h: 70 },
+  { key: 'curriculum', doodle: '/img/doodle-bee.webp', w: 72, h: 85 }
 ] as const
 
 export function Expertise() {
   return (
-    <section className="mx-auto max-w-5xl px-5 py-12">
-      <SectionHeading className="mb-6 text-center">
+    <section className="mx-auto max-w-2xl px-5 py-14 md:py-20">
+      <SectionHeading className="mb-10 md:mb-12">
         {copy.approach.heading}
       </SectionHeading>
-      <ScrollReveal>
-        <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-x-3 sm:gap-y-5 sm:[grid-auto-rows:1fr] lg:grid-cols-4">
-          {cards.map(({ key, doodle, w, h }) => (
+      <div className="flex flex-col gap-9 md:gap-12">
+        {rows.map(({ key, doodle, w, h }, i) => (
+          <ScrollReveal key={key} delay={i * 90}>
             <div
-              key={key}
-              className="relative h-full rounded-3xl border border-primary-200 bg-white p-5 shadow-sm [overflow:visible] md:p-6"
+              className={cn(
+                'flex items-start gap-5 sm:items-center sm:gap-8',
+                i % 2 === 1 && 'sm:flex-row-reverse'
+              )}
             >
+              {/* Sticker-style doodle anchors each row; no card box. */}
               <Doodle
                 src={doodle}
                 alt=""
                 width={w}
                 height={h}
-                className="absolute -right-2 -top-4 h-auto rotate-[8deg]"
+                className={cn(
+                  'mt-1 h-auto w-16 shrink-0 sm:mt-0 sm:w-24',
+                  i % 2 === 0 ? '-rotate-6' : 'rotate-6'
+                )}
               />
-              <h3 className="pr-8 text-lg font-semibold leading-snug text-brand sm:text-[15px] md:text-base">
-                {copy.approach[key].title}
-              </h3>
-              <p className="mt-1.5 text-[14.5px] leading-relaxed text-foreground/70 sm:text-xs md:text-sm">
-                {copy.approach[key].body}
-              </p>
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold text-brand sm:text-xl">
+                  {copy.approach[key].title}
+                </h3>
+                <p className="mt-1.5 leading-relaxed text-foreground/75">
+                  {copy.approach[key].body}
+                </p>
+              </div>
             </div>
-          ))}
-        </div>
-      </ScrollReveal>
+          </ScrollReveal>
+        ))}
+      </div>
     </section>
   )
 }

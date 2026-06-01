@@ -15,7 +15,7 @@ export function ActivitiesPeek() {
   return (
     <section className="mx-auto max-w-5xl px-5 py-12">
       <ScrollReveal>
-        <SectionHeading className="text-center">
+        <SectionHeading size="sm" className="text-center">
           {copy.home.activitiesPeek}
         </SectionHeading>
         <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -39,7 +39,7 @@ export function ActivitiesPeek() {
                 </div>
               </div>
               <span className="absolute bottom-0 left-0 right-0 p-2.5">
-                <span className="relative z-1 rounded-md bg-black/45 px-2 py-1 text-[11px] font-medium text-white">
+                <span className="relative z-1 rounded-md bg-black/65 px-2 py-1 text-xs font-medium text-white">
                   {copy.activities[key]}
                 </span>
               </span>
@@ -49,10 +49,13 @@ export function ActivitiesPeek() {
         <div className="mt-6 text-center">
           <Link
             href="/activities"
-            className="inline-flex items-center gap-1 font-bold text-brand"
+            className="group inline-flex min-h-11 items-center gap-1 rounded-full px-3 font-bold text-brand transition-colors hover:text-brand/80"
           >
             {copy.home.seeAll}
-            <IconArrowRight size={16} />
+            <IconArrowRight
+              size={16}
+              className="transition-transform group-hover:translate-x-0.5"
+            />
           </Link>
         </div>
       </ScrollReveal>

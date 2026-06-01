@@ -2,18 +2,30 @@
 import { useInView } from '@/hooks/useInView'
 import { cn } from '@/lib/utils'
 
+// Three tiers of section heading give the page a hierarchy instead of one flat
+// size: `lg` for the page's peak section (testimonials), `default` for most,
+// `sm` for quieter labels (a video title, "a peek at..."). All Fredoka + brand
+// green via the base layer; `text-balance` keeps multi-word headings even.
+const sizes = {
+  sm: 'text-xl font-semibold sm:text-2xl',
+  default: 'text-2xl font-semibold sm:text-3xl',
+  lg: 'text-3xl font-bold sm:text-4xl'
+} as const
+
 export function SectionHeading({
   children,
-  className
+  className,
+  size = 'default'
 }: {
   children: React.ReactNode
   className?: string
+  size?: keyof typeof sizes
 }) {
   const { ref, inView } = useInView<HTMLHeadingElement>()
   return (
     <h2
       ref={ref}
-      className={cn('text-2xl font-semibold text-brand sm:text-3xl', className)}
+      className={cn('text-balance text-brand', sizes[size], className)}
     >
       <span className="relative inline-block">
         {children}

@@ -145,6 +145,13 @@
   * {
     @apply border-border outline-ring/50;
   }
+  /* Consistent, high-visibility focus ring for every brand link (the hand-rolled
+     pill CTAs, nav, footer). shadcn primitives carry their own focus-visible
+     ring; this covers the <a>-based ones the design system doesn't. */
+  a:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
   html {
     color-scheme: light;
     background: var(--color-background);
