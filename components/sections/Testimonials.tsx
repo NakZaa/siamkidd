@@ -47,7 +47,7 @@ export function Testimonials() {
   return (
     <section className="mx-auto max-w-4xl px-5 py-12">
       <ScrollReveal>
-        <SectionHeading className="text-center">
+        <SectionHeading size="lg" className="text-center">
           {copy.testimonials.heading}
         </SectionHeading>
         <div className="mt-6 grid gap-4 md:grid-cols-2 md:auto-rows-[1fr]">
@@ -71,13 +71,13 @@ export function Testimonials() {
               </div>
               <p
                 lang={lang}
-                className={`mt-3 leading-relaxed text-foreground/80 ${lang ? '' : 'italic'}`}
+                className={`mt-3 text-pretty leading-relaxed text-foreground/80 ${lang ? '' : 'italic'}`}
               >
                 {quote}
               </p>
               <div className="mt-auto pt-4">
                 <p className="font-semibold text-brand">{name}</p>
-                <p className="text-sm text-foreground/60">
+                <p className="text-sm text-foreground/75">
                   {copy.testimonials.role}
                 </p>
               </div>

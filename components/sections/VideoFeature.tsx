@@ -14,7 +14,9 @@ export function VideoFeature({
   return (
     <section className="mx-auto max-w-screen-sm px-5 py-10 md:max-w-2xl">
       <ScrollReveal>
-        <SectionHeading className="mb-5 text-center">{title}</SectionHeading>
+        <SectionHeading size="sm" className="mb-5 text-center">
+          {title}
+        </SectionHeading>
         <YouTubeFacade url={url} title={title} poster={poster} />
       </ScrollReveal>
     </section>

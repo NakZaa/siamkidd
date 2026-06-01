@@ -12,13 +12,13 @@ export const copy = {
     tagline:
       "Memories of childhood stay with us forever, so let's make those memories count.",
     contact: 'Contact us',
-    facebook: 'Facebook'
+    facebook: 'Message us on Facebook'
   },
   trust: {
     years: '10+ years of care',
     teachers: 'Native English teachers',
     curriculum: 'UK Early Years curriculum',
-    safe: 'Safe & secure'
+    safe: 'Secure entry & CCTV'
   },
   mission: {
     heading: 'Our belief',

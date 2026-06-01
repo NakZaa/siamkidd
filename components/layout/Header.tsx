@@ -127,7 +127,7 @@ export function Header() {
                 aria-expanded={open}
                 aria-controls="main-menu"
                 onClick={() => setOpen(v => !v)}
-                className="relative grid h-9 w-9 place-items-center md:hidden"
+                className="relative grid h-11 w-11 place-items-center rounded-lg outline-none md:hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 <span className="sr-only">{copy.nav.menu}</span>
                 <span aria-hidden className="relative block h-4 w-5">
